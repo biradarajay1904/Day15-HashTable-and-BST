@@ -4,56 +4,37 @@ public class LinkedList<K, V> {
 	MapNode<K, V> head;
 	MapNode<K, V> tail;
 
-	public void add(K key, V value) {
-		MapNode<K, V> newNode = new MapNode<K, V>(key, value);
+	public MapNode<K, V> search(K searchData) {
+		MapNode<K, V> temp = head;
+		while (temp != null) {
+			if (temp.key.equals(searchData))
+				return temp;
+			temp = temp.next;
+		}
+		return null;
+	}
+
+	public void append(MapNode<K, V> node) {
+
 		if (head == null) {
-			head = newNode;
-			tail = newNode;
+			head = node;
+			tail = node;
 		} else {
-			tail.next = newNode;
-			tail = newNode;
+			tail.next = node;
+			tail = node;
 		}
-	}
-
-	public void replace(K key, V value) {
-		MapNode<K, V> temp = head;
-		while (temp != null) {
-			if (temp.key.equals(key)) {
-				temp.value = value;
-			}
-			temp = temp.next;
-		}
-	}
-
-	public boolean containsKey(String key) {
-		MapNode<K, V> temp = head;
-		while (temp != null) {
-			if (temp.key.equals(key)) {
-				return true;
-			}
-			temp = temp.next;
-		}
-		return false;
-
-	}
-
-	public int get(String word) {
-		MapNode<K, V> temp = head;
-		int count = 0;
-		while (temp != null) {
-			if (temp.key.equals(word)) {
-				count++;
-			}
-			temp = temp.next;
-		}
-		return count;
 	}
 
 	public void print() {
 		MapNode<K, V> temp = head;
 		while (temp != null) {
-			System.out.print("{ " + temp.key + "=" + temp.value + " }" + "\n");
+			System.out.println(temp);
 			temp = temp.next;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "LinkedList{" + "head=" + head + ", tail=" + tail + '}';
 	}
 }

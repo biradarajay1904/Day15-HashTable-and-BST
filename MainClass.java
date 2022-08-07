@@ -2,18 +2,19 @@ package com.bridelabz;
 
 public class MainClass {
 	public static void main(String[] args) {
-		String paragraph = "To be or not to be";
+		String paragraph = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
 
 		String[] splitArray = paragraph.split(" ");
 		HashTable<String, Integer> hashTable = new HashTable<>();
 		for (String word : splitArray) {
-			if (hashTable.containsKey(word)) {
-				int count = hashTable.get(word);
-				hashTable.replace(word, count + 1);
-			} else {
-				hashTable.put(word, 1);
-			}
+			Integer value = hashTable.get(word);
+			if (value == null) {
+				value = 1;
+			} else
+				value = value + 1;
+			hashTable.add(word, value);
 		}
+
 		hashTable.print();
 	}
 }
