@@ -1,6 +1,7 @@
 package com.bridelabz;
 
 public class MainClass {
+
 	public static void main(String[] args) {
 		String paragraph = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
 
@@ -15,6 +16,10 @@ public class MainClass {
 			hashTable.add(word, value);
 		}
 
+		hashTable.print();
+		System.out.println();
+
+		hashTable.remove("avoidable");
 		hashTable.print();
 	}
 }

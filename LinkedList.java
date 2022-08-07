@@ -14,6 +14,15 @@ public class LinkedList<K, V> {
 		return null;
 	}
 
+	public void delete(K key) {
+		MapNode<K, V> temp = head;
+		MapNode<K, V> searchedElement = search(key);
+		while (temp.next != searchedElement) {
+			temp = temp.next;
+		}
+		temp.next = searchedElement.next;
+	}
+
 	public void append(MapNode<K, V> node) {
 
 		if (head == null) {
